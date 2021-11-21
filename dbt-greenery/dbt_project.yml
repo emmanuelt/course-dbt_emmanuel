@@ -31,4 +31,4 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_greenery: # this matches the project folder name
     +materialized: table # this applies to all models in the current project
-    +schema: dbt_emmanuel_t
+    #+schema: dbt_emmanuel_t
