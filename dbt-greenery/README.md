@@ -1,25 +1,31 @@
-###How many users do we have?
+### How many users do we have?
+<br />
 select count(distinct user_id) as nb_of_users from users_stg;
+<br />
 **There are 130 users.**
 
-###On average, how many orders do we receive per hour?
+### On average, how many orders do we receive per hour?
+<br />
 select first_order_date, last_order_date,
        extract(epoch FROM last_order_date-first_order_date)/3600 as Diff_In_Hours,
        orders / (extract(epoch FROM last_order_date-first_order_date)/3600) as Orders_per_Hour
 from (select min(created_at) as first_order_date,max(created_at) as last_order_date,
              count(distinct order_id) as orders
       from orders_stg) t;
+<br />
 **On average 8.35 orders are received per hour.**
 
-###On average, how long does an order take from being placed to being delivered?
+### On average, how long does an order take from being placed to being delivered?
+<br />
 select avg(Diff_In_Hours) as Avg_Delivery_Time_In_Hours
 from (select created_at, delivered_at,
              extract(epoch FROM delivered_at-created_at)/3600 as Diff_In_Hours
       from orders_stg) t
 where Diff_In_Hours is not null;
+<br />
 **On average it takes 94 hours (almost 4 days) for an order to be delivered.**
 
-###How many users have only made one purchase? Two purchases? Three+ purchases?
+### How many users have only made one purchase? Two purchases? Three+ purchases?
 select Purchases, count(distinct user_id) as Users
 from
 (select u.user_id, 
@@ -34,13 +40,16 @@ from
  group by u.user_id) t
 group by Purchases
 order by 1;
+<br />
 **25 users have made only 1 purchase. 22 users have made 2 purchases. 81 users have made 3 or more purchases.**
 
-###On average, how many unique sessions do we have per hour?
+### On average, how many unique sessions do we have per hour?
+<br />
 select first_session_date, last_session_date, sessions,
        extract(epoch FROM last_session_date-first_session_date)/3600 as Diff_In_Hours,
        sessions / (extract(epoch FROM last_session_date-first_session_date)/3600) as Sessions_per_Hour
 from (select min(created_at) as first_session_date,max(created_at) as last_session_date,
              count(distinct session_id) as sessions
       from events_stg) t;
+<br />
 **On average, there are 0.11 sessions per hour.**
