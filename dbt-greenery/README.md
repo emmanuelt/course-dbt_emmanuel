@@ -1,7 +1,7 @@
 ### How many users do we have?
 **There are 130 users.**
 ```
-select count(distinct user_id) as nb_of_users from users_stg;
+select count(distinct user_id) as nb_of_users from stg_users;
 ```
 <br />
 
@@ -13,7 +13,7 @@ select first_order_date, last_order_date,
        orders / (extract(epoch from last_order_date-first_order_date)/3600) as Orders_per_Hour
 from (select min(created_at) as first_order_date,max(created_at) as last_order_date,
              count(distinct order_id) as orders
-      from orders_stg) t;
+      from stg_orders) t;
 ```
 <br />
 
@@ -23,7 +23,7 @@ from (select min(created_at) as first_order_date,max(created_at) as last_order_d
 select avg(Diff_In_Hours) as Avg_Delivery_Time_In_Hours
 from (select created_at, delivered_at,
              extract(epoch FROM delivered_at-created_at)/3600 as Diff_In_Hours
-      from orders_stg) t
+      from stg_orders) t
 where Diff_In_Hours is not null;
 ```
 <br />
@@ -33,16 +33,14 @@ where Diff_In_Hours is not null;
 ```
 select Purchases, count(distinct user_id) as Users
 from
-(select u.user_id, 
-        case when count(distinct o.order_id)=0 then '0'
-             when count(distinct o.order_id)=1 then '1'
-             when count(distinct o.order_id)=2 then '2'
-             when count(distinct o.order_id)>=3 then '3+'
+(select user_id, 
+        case when count(distinct order_id)=0 then '0'
+             when count(distinct order_id)=1 then '1'
+             when count(distinct order_id)=2 then '2'
+             when count(distinct order_id)>=3 then '3+'
         end as Purchases
- from users_stg as u
- left join orders_stg as o
- on u.user_id = o.user_id
- group by u.user_id) t
+ from stg_orders
+ group by user_id) t
 group by Purchases
 order by 1;
 ```
@@ -56,5 +54,5 @@ select first_session_date, last_session_date, sessions,
        sessions / (extract(epoch from last_session_date-first_session_date)/3600) as Sessions_per_Hour
 from (select min(created_at) as first_session_date,max(created_at) as last_session_date,
              count(distinct session_id) as sessions
-      from events_stg) t;
+      from stg_events) t;
 ```
