@@ -30,5 +30,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # These settings can be overridden in the individual model files using the `{{ config(...) }}` macro.
 models:
   dbt_greenery: # this matches the project folder name
-    +materialized: table # this applies to all models in the current project
-    #+schema: dbt_emmanuel_t
+    staging:
+      schema: staging
+      +materialized: table

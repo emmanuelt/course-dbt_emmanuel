@@ -2,19 +2,19 @@
 version: 2
 
 models:
-  - name: addresses_stg
+  - name: stg_addresses
     description: "Staging table which contains the address of each customer."
-  - name: events_stg
+  - name: stg_events
     description: "Staging table which contains events from all customer actions on the booking flow."
-  - name: order_items_stg
+  - name: stg_order_items
     description: "Staging table which contains product types & product quantities per order_id."
-  - name: orders_stg
+  - name: stg_orders
     description: "Staging table which contains the orders from customers."
-  - name: products_stg
+  - name: stg_products
     description: "Staging table which contains name, price & quantity in stock for each product type."
-  - name: promos_stg
+  - name: stg_promos
     description: "Staging table which contains discount types and % discount for each promotional offer."
-  - name: users_stg
+  - name: stg_users
     description: "Staging table which contains all our customers."
         
         
