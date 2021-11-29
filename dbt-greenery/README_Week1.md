@@ -56,3 +56,21 @@ from (select min(created_at) as first_session_date,max(created_at) as last_sessi
              count(distinct session_id) as sessions
       from stg_events) t;
 ```
+
+
+select
+(select count(user_id)
+ from
+ (select user_id
+  from stg_orders
+  group by user_id
+  having count(distinct order_id)>1 
+) t1 )::float
+ /
+ (select count(user_id)
+  from
+ (select user_id
+  from stg_orders
+  group by user_id
+  having count(distinct order_id)>=1 
+) t2 )::float
