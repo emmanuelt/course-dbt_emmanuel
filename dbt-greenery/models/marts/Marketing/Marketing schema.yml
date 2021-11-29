@@ -1,0 +1,9 @@
+
+version: 2
+
+models:
+  - name: fact_user_orders
+    description: "Fact table with users and various user metrics related to web visits and orders."
+  - name: int_user_order_metrics
+    description: "Intermediate table to calculate user metrics related to web visits and orders.              and to count the total products purchased per order. 
+                  This table should not be used by data analysts"

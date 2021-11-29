@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: fact_web_events
+    description: "Fact table to calcule web metrics for each url of the website."
+  - name: fact_web_event_types
+    description: "Fact table to calculate users, web events and web sessions per event_type."

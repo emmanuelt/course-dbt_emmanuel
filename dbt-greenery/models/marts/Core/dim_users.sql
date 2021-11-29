@@ -6,7 +6,6 @@ select
   u.phone_number as user_phone_number,
   u.created_at as user_creation_date,
   u.updated_at as user_last_update_date,
-  u.address_uuid as user_address_uuid,
   a.address as user_address,
   a.zipcode as user_zipcode,
   a.state as user_state,

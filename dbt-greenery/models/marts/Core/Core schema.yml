@@ -1,0 +1,14 @@
+
+version: 2
+
+models:
+  - name: dim_products
+    description: "Dimension table with all products data"
+  - name: dim_users
+    description: "Dimension table with all customers data"
+  - name: fact_orders
+    description: "Fact table with details of all orders"
+  - name: int_order_items_metrics
+    description: "Intermediate table to count the distinct product_types per order 
+                  and to count the total products purchased per order. 
+                  This table should not be used by data analysts"
