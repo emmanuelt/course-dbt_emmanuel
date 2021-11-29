@@ -5,7 +5,8 @@
 }}*/
 
 SELECT 
-    address_id,
+    id as address_id,
+    address_id as address_uuid,
     address,
     zipcode,
     state,

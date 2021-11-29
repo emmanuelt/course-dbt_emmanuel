@@ -2,20 +2,20 @@
 **The repeat rate is 80.5%.**
 ```
 select
-(select count(user_id)
+(select count(user_uuid)
  from
- (select user_id
+ (select user_uuid
   from stg_orders
-  group by user_id
-  having count(distinct order_id)>1 
+  group by user_uuid
+  having count(distinct order_uuid)>1 
 ) t1 )::float
  /
- (select count(user_id)
+ (select count(user_uuid)
   from
- (select user_id
+ (select user_uuid
   from stg_orders
-  group by user_id
-  having count(distinct order_id)>=1 
+  group by user_uuid
+  having count(distinct order_uuid)>=1 
 ) t2 )::float
 ```
 
@@ -37,4 +37,4 @@ select
 
 ### Think about what exploratory analysis you would do to approach this question.
 **- Scatter plots and correlation factor between number of purchases and CSAT/CES scores.**\
-**- Table with share of users who purchased several times versus users who purchased only with various metrics to look at (avg CSAT, avg DSAT, acg CES, avg delivert time, share of orders in promo, avg total order).**
+**- Table with share of users who purchased several times versus users who purchased only with various metrics to look at (avg CSAT, avg DSAT, acg CES, avg delivery time, share of orders in promo, avg total order).**

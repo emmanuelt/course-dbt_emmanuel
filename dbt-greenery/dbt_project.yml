@@ -33,3 +33,13 @@ models:
     staging:
       schema: staging
       +materialized: table
+    marts:
+      Core:
+        +schema: core
+        +materialized: table
+      Marketing:
+        +schema: marketing
+        +materialized: table
+      Product:
+        +schema: product
+        +materialized: table
