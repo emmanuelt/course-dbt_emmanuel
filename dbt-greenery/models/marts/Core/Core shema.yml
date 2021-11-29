@@ -1,0 +1,10 @@
+
+version: 2
+
+models:
+  - name: dim_products
+    description: "Dimension table with all products data (for end Analytics users)"
+  - name: dim_users
+    description: "Dimension table with all customers data (for end Analytics users)"
+  - name: fact_orders
+    description: "Fact table with details of all orders (for end Analytics users)"

@@ -1,8 +1,6 @@
 select
-  product_id
-  , product_guid
-  , product_name
-  , product_price
-  , product_stock_quantity
-from
-  {{ ref('stg_products') }}
+  product_uuid,
+  name as product_name,
+  price as product_price,
+  quantity_in_stock as product_quantity_in_stock
+from {{ ref('stg_products') }}

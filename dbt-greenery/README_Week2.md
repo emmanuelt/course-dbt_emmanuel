@@ -37,4 +37,4 @@ select
 
 ### Think about what exploratory analysis you would do to approach this question.
 **- Scatter plots and correlation factor between number of purchases and CSAT/CES scores.**\
-**- Table with share of users who purchased several times versus users who purchased only with various metrics to look at (avg CSAT, avg DSAT, acg CES, avg delivery time, share of orders in promo, avg total order).**
+**- Table with share of users who purchased several times versus users who purchased only with various metrics to look at (avg CSAT, avg DSAT, avg CES, avg delivery time, share of orders in promo, avg total order).**
