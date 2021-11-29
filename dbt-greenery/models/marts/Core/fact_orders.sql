@@ -17,8 +17,8 @@ select
   o.order_total-o.shipping_cost-o.order_cost as order_greenery_margin,
   o.promo_name as order_promo_name,
   pr.discount as order_promo_discount,
-  count(distinct oi.product_uuid) as order_product_types_ordered,
-  sum(oi.quantity_ordered) as order_quantity_of_products_ordered
+  oi.order_product_types_ordered,
+  oi.order_quantity_of_products_ordered
 from {{ ref('stg_orders') }} o
 left join {{ ref('stg_users') }} u
 on o.user_uuid = u.user_uuid
@@ -26,7 +26,7 @@ left join {{ ref('stg_addresses') }} a
 on o.address_uuid = a.address_uuid
 left join {{ ref('stg_promos') }} pr
 on o.promo_name=pr.promo_name
-left join {{ ref('stg_order_items') }} oi
+left join {{ ref('int_order_items') }} oi
 on o.order_uuid=oi.order_uuid
 --left join {{ ref('stg_products') }} pt
 --on oi.product_uuid=pt.product_uuid
@@ -48,4 +48,6 @@ group by
   o.order_cost,
   o.order_total-o.shipping_cost-o.order_cost,
   o.promo_name,
-  pr.discount
+  pr.discount,
+  oi.order_product_types_ordered,
+  oi.order_quantity_of_products_ordered

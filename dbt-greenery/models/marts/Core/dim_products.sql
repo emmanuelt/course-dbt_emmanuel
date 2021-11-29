@@ -1,4 +1,4 @@
-select
+select 
   product_uuid,
   name as product_name,
   price as product_price,
