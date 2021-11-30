@@ -40,9 +40,22 @@ These metrics should be good indicators to know if each user will purchase again
 - Table with share of users who purchased several times versus users who purchased only with various metrics to look at (avg CSAT, avg DSAT, avg CES, avg delivery time, share of orders in promo, avg total order).
 
 ### Explain the marts models you added. Why did you organize the models in the way you did?
-In the Core folder I created:
+In the **Core folder** I created:
 - **dim_users**: I added addresses data to the users data and I also calculated various metrics at user level based on website behaviors and order behaviors.
 The goal was to create a big table we can rely on to get all customers dimensions but also some customer behaviors.
 - **dim_product**: I simply replicated the same data than in the staging products table but keeping only the product_uuid (not keeping the integer id) and making some minor renaming to bring clarity to end users of the dimension.
 - **fact_orders**: I reused a lot of fields from the orders staging table and I calculated revenue & cost metrics for the customers and for Greenery. I also added information from other tables such as the discounted value from a promotion as well as the quantity of distinct product types per order and the quantity of products per order.
 The goal was to create a master table with the main data from each order. 
+
+In the **Marketing folder** I created:
+- **fact_users_orders**: I built a table at the "user-order" aggregation level. 
+I used an intermediate table to do all the main joins (between users, addresses, orders & a previous intermediate table I calculated in the Core folder to get the quantity of distinct product types and the quantity of products for each order). 
+In the final fact table (fact_users_oders) I calculated revenue & cost metrics for the customers and for Greenery.
+The goal was to create a table containing all the orders of each user, in order to be able to know very easily what are all the orders a given user performed in the past, or to get all the active orders.
+
+In the **Product folder** I created:
+- **fact_web_event_types**: I calculated the volume of users, volume of web sessions and volume of web events for each event type.
+The goal was to get a quick overview of what are the types of actions being performed on Greenery website, and to size the frequency of occurence of these various events looking at different angles (users, web sessions, events).
+- **fact_web_events**: I calculated the volume of web events for each page URL on the Greenery website. 
+The goal was to get a quick overview of what are the types of actions being performed on each page of the Greenery website, and to size the frequency of these actions occuring.
+I did not use intermediate table for the Product folder on purpose. 
