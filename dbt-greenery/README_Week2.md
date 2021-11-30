@@ -22,7 +22,7 @@ select
 ### What are good indicators of a user who will likely purchase again? 
 - Users who purchased more than once and who visited the website recently.
 - Users who visited the website recently and have a high conversion rate (using historical data).
-- Potentially users who visited the website recently and who have not purchased yet, in particular users who added items in a cart but did not went through the checkout process.
+- Potentially users who visited the website recently and who have not purchased yet, in particular users who added items in a cart or went to the checkout page but did not finalize the order (package not shipped).
 
 ### What about indicators of users who are likely NOT to purchase again? 
 - Users who never purchased (could have visited the website or not).
