@@ -1,20 +1,72 @@
-
 version: 2
 
 models:
-  - name: stg_addresses
-    description: "Staging table which contains the address of each customer."
-  - name: stg_events
-    description: "Staging table which contains events from all customer actions on the booking flow."
-  - name: stg_order_items
-    description: "Staging table which contains product types & product quantities per order_id."
-  - name: stg_orders
-    description: "Staging table which contains the orders from customers."
-  - name: stg_products
-    description: "Staging table which contains name, price & quantity in stock for each product type."
-  - name: stg_promos
-    description: "Staging table which contains discount types and % discount for each promotional offer."
+
   - name: stg_users
     description: "Staging table which contains all our customers."
+    columns:  
+      - name: user_uuid
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        tests:
+          - only_letters
+      - name: last_name
+        tests:
+          - only_letters
+      - name: created_at
+        tests:
+          - valid_date
+      - name: updated_at
+        tests:
+          - valid_date
+      - name: address_uuid
+        tests:
+          - relationships:
+              to: ref('stg_addresses')
+              field: address_uuid  
+
+  - name: stg_addresses
+    description: "Staging table which contains the address of each customer."
+    columns:  
+      - name: address_uuid
+        tests:
+          - unique
+          - not_null
+      - name: zipcode
+        tests:
+          - positive_values
+          - only_digits
+
+  - name: stg_events
+    description: "Staging table which contains events from all customer actions on the booking flow."
+    columns:  
+      - name: event_uuid
+        tests:
+          - unique
+          - not_null
+      - name: user_uuid
+        tests:
+          - relationships:
+              to: ref('stg_users')
+              field: user_uuid  
+      - name: created_at
+        tests:
+          - valid_date
+
+  - name: stg_order_items
+    description: "Staging table which contains product types & product quantities per order_id."
+
+  - name: stg_orders
+    description: "Staging table which contains the orders from customers."
+
+  - name: stg_products
+    description: "Staging table which contains name, price & quantity in stock for each product type."
+
+  - name: stg_promos
+    description: "Staging table which contains discount types and % discount for each promotional offer."
+
+ 
         
         
