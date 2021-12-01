@@ -67,10 +67,10 @@ I did not use intermediate table for the Product folder on purpose.
 - For some mart models it was not possible to apply a **unique** test because of the aggregation level (user-order, order-item).
 - I also applied tests to make sure the total cost of an order paid by a customer could only be strictly positive.
 - I also applied tests to make sure the quantity in stock coud only be positive or equal to zero, but not negative.
-- I also applied tests on dates to make sure dates or oders or creation of users were relevant (between Jan20 to date).
-- Finally I applied tests to make sure some fiels only contain digits or only contain letters.
+- I also applied tests on dates to make sure order dates or user creation dates were relevant (between Jan20 to date).
+- Finally I applied tests to make sure some fields only contain digits or only contain letters, using regex.
 ### Did you find any “bad” data as you added and ran tests on your models?
-- Yes I indentified one outlier where the total cost of order paid by the customer was negative.
+- Yes I identified one outlier where the total cost of order paid by the customer was negative.
 ### How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests? ###
 - I kept this outlier in the staging model but removed it from the mart models with orders (fact_oders, fact_user_orders).
 
