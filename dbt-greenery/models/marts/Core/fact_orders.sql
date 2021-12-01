@@ -28,8 +28,7 @@ left join {{ ref('stg_promos') }} pr
 on o.promo_name=pr.promo_name
 left join {{ ref('int_order_items_metrics') }} oi
 on o.order_uuid=oi.order_uuid
---left join {{ ref('stg_products') }} pt
---on oi.product_uuid=pt.product_uuid
+where order_total>0  --Exclusion of 1 outlier
 group by 
   o.order_uuid,
   o.user_uuid,

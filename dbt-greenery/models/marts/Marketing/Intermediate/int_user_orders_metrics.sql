@@ -29,6 +29,7 @@ left join {{ ref('stg_orders') }} o
 on u.user_uuid=o.user_uuid
 left join {{ ref('int_order_items_metrics') }} oi
 on o.order_uuid=oi.order_uuid
+where o.order_total>0  --Exclusion of 1 outlier
 group by
   u.user_uuid,
   u.first_name,

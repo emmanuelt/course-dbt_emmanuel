@@ -59,3 +59,18 @@ The goal was to get a quick overview of what are the types of actions being perf
 - **fact_web_events**: I calculated the volume of web events for each page URL on the Greenery website. 
 The goal was to get a quick overview of what are the types of actions being performed on each page of the Greenery website, and to size the frequency of these actions occuring.
 I did not use intermediate table for the Product folder on purpose. 
+<br />
+<br />
+### We added some more models and transformed some data! Now we need to make sure they’re accurately reflecting the data. Add dbt tests into your dbt project on your existing models from Week 1, and new models from the section above: <br /> <br /> What assumptions are you making about each model? (i.e. why are you adding each test?) <br /> 
+- I applied tests in all my staging models and my mart models so at the end more than 130 tests have been passed.
+I used the **not_null** and **unique** Dbt default test macros to ensure uniqueness of the primary keys for the main staging tables.
+- I also used the same type of tests for dimension models and fact models whenever applicable.
+- For some mart models it was not possible to apply a **unique** test because of the aggregation level (user-order, order-item).
+- I also applied tests to make sure the total cost of an order paid by a customer could only be strictly positive.
+- I also applied tests to make sure the quantity in stock coud only be positive or equal to zero, but not negative.
+- I also applied tests on dates to make sure dates or oders or creation of users were relevant (between Jan20 to date). - Finally I applied tests to make sure some fiels only contain digits or only contain letters.
+### Did you find any “bad” data as you added and ran tests on your models?
+- Yes I indentified one outlier where the total cost of order paid by the customer was negative.
+### How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests? ###
+- I kept this outlier in the staging model but removed it from the mart models with orders (fact_oders, fact_user_orders).
+
