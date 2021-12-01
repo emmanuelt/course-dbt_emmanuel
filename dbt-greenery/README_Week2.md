@@ -73,4 +73,6 @@ I did not use intermediate table for the Product folder on purpose.
 - Yes I identified one outlier where the total cost of order paid by the customer was negative.
 ### How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests? ###
 - I kept this outlier in the staging model but removed it from the mart models with orders (fact_oders, fact_user_orders).
-
+### Your stakeholders at Greenery want to understand the state of the data each day. Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.
+- To ensure the tests pass regularly we will have to schedule daily runs of the various models and send the output of the "unpassed" tests and "unfreshed" data sources to stakeholders via email (if there is any unsuccesful run).
+- I do not know yet how to orchestrate this within Dbt but I guess we will learn it in the 2 coming weeks.
