@@ -60,8 +60,8 @@ The goal was to get a quick overview of what are the types of actions being perf
 The goal was to get a quick overview of what are the types of actions being performed on each page of the Greenery website, and to size the frequency of these actions occuring.
 I did not use intermediate table for the Product folder on purpose. 
 <br />
-<br />
-### We added some more models and transformed some data! Now we need to make sure they’re accurately reflecting the data. Add dbt tests into your dbt project on your existing models from Week 1, and new models from the section above: <br /> <br /> What assumptions are you making about each model? (i.e. why are you adding each test?) <br /> 
+
+### We added some more models and transformed some data! Now we need to make sure they’re accurately reflecting the data. Add dbt tests into your dbt project on your existing models from Week 1, and new models from the section above: <br /> What assumptions are you making about each model? (i.e. why are you adding each test?) <br /> 
 - I applied tests in all my staging models and my mart models so at the end more than 130 tests have been passed.
 I used the **not_null** and **unique** Dbt default test macros to ensure uniqueness of the primary keys for the main staging tables.
 - I also used the same type of tests for dimension models and fact models whenever applicable.
