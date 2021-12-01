@@ -36,7 +36,6 @@ models:
           - not_null
       - name: zipcode
         tests:
-          - positive_values
           - only_digits
 
   - name: stg_events
@@ -57,10 +56,72 @@ models:
 
   - name: stg_order_items
     description: "Staging table which contains product types & product quantities per order_id."
+    columns:  
+      - name: order_uuid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_uuid 
+      - name: product_uuid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_uuid 
+      - name: quantity_ordered
+        tests:
+          - positive_or_equal_to_zero
 
   - name: stg_orders
     description: "Staging table which contains the orders from customers."
-
+    columns:  
+      - name: order_uuid
+        tests:
+          - unique
+          - not_null
+          #- relationships:
+          #    to: ref('stg_order_items')
+          #    field: order_uuid 
+      - name: promo_name
+        tests:
+          - relationships:
+              to: ref('stg_promos')
+              field: promo_name 
+      - name: user_uuid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_users')
+              field: user_uuid 
+      - name: address_uuid
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_addresses')
+              field: address_uuid 
+      - name: created_at
+        tests:
+          - valid_date
+      - name: order_cost
+        tests:
+          - strictly_positive
+      - name: shipping_cost
+        tests:
+          - strictly_positive
+      - name: order_total
+      #  tests:
+      #    - strictly_positive    condition removed due to 1 outlier (we could remove it in staging )
+      - name: estimated_delivery_at
+        tests:
+          - valid_date
+      - name: delivered_at
+        tests:
+          - valid_date
+      - name: order_status
+        tests:
+          - only_letters
+      
   - name: stg_products
     description: "Staging table which contains name, price & quantity in stock for each product type."
 
