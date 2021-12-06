@@ -14,38 +14,38 @@ I also do not understand how some sessions can have a "delete_from_cart" event w
 ### What is our conversion rate by product?
 These are the final values I obtained per product, as well as the query I have built to obtain these results.
 
-   product_name     | web_sessions_checked_out | web_sessions | conversion_rate 
----------------------+--------------------------+--------------+-----------------
- Monstera            |                       18 |           28 |          0.6429
- Peace Lily          |                       17 |           28 |          0.6071
- Orchid              |                       23 |           38 |          0.6053
- Majesty Palm        |                       22 |           37 |          0.5946
- ZZ Plant            |                       23 |           39 |          0.5897
- String of pearls    |                       25 |           43 |          0.5814
- Birds Nest Fern     |                       20 |           35 |          0.5714
- Dragon Tree         |                       20 |           36 |          0.5556
- Bamboo              |                       21 |           38 |          0.5526
- Bird of Paradise    |                       19 |           35 |          0.5429
- Pink Anthurium      |                       19 |           35 |          0.5429
- Spider Plant        |                       17 |           32 |          0.5313
- Cactus              |                       17 |           33 |          0.5152
- Arrow Head          |                       20 |           41 |          0.4878
- Calathea Makoyana   |                       16 |           33 |          0.4848
- Pilea Peperomioides |                       16 |           33 |          0.4848
- Money Tree          |                       14 |           29 |          0.4828
- Pothos              |                       12 |           25 |          0.4800
- Fiddle Leaf Fig     |                       15 |           32 |          0.4688
- Boston Fern         |                       15 |           32 |          0.4688
- Philodendron        |                       16 |           35 |          0.4571
- Snake Plant         |                       16 |           35 |          0.4571
- Angel Wings Begonia |                       14 |           31 |          0.4516
- Jade Plant          |                       10 |           24 |          0.4167
- Aloe Vera           |                       15 |           38 |          0.3947
- Ficus               |                       14 |           37 |          0.3784
- Ponytail Palm       |                       11 |           30 |          0.3667
- Rubber Plant        |                       13 |           36 |          0.3611
- Alocasia Polly      |                       10 |           28 |          0.3571
- Devil's Ivy         |                       10 |           31 |          0.3226
+   product_name     | web_sessions_checked_out | web_sessions | conversion_rate |
+---------------------------------------------------------------------------------
+ Monstera           |                       18 |           28 |          0.6429 |
+ Peace Lily         |                       17 |           28 |          0.6071 |
+ Orchid             |                       23 |           38 |          0.6053 |
+ Majesty Palm       |                       22 |           37 |          0.5946 |
+ ZZ Plant           |                       23 |           39 |          0.5897 |
+ String of pearls   |                       25 |           43 |          0.5814 |
+ Birds Nest Fern    |                       20 |           35 |          0.5714 |
+ Dragon Tree        |                       20 |           36 |          0.5556 |
+ Bamboo             |                       21 |           38 |          0.5526 |
+ Bird of Paradise   |                       19 |           35 |          0.5429 | 
+ Pink Anthurium     |                       19 |           35 |          0.5429 |
+ Spider Plant       |                       17 |           32 |          0.5313 |
+ Cactus             |                       17 |           33 |          0.5152 |
+ Arrow Head         |                       20 |           41 |          0.4878 | 
+ Calathea Makoyana  |                       16 |           33 |          0.4848 |
+ Pilea Peperomioides|                       16 |           33 |          0.4848 |
+ Money Tree         |                       14 |           29 |          0.4828 |
+ Pothos             |                       12 |           25 |          0.4800 |
+ Fiddle Leaf Fig    |                       15 |           32 |          0.4688 |
+ Boston Fern        |                       15 |           32 |          0.4688 |
+ Philodendron       |                       16 |           35 |          0.4571 |
+ Snake Plant        |                       16 |           35 |          0.4571 |
+ Angel Wings Begonia|                       14 |           31 |          0.4516 |
+ Jade Plant         |                       10 |           24 |          0.4167 |
+ Aloe Vera          |                       15 |           38 |          0.3947 |
+ Ficus              |                       14 |           37 |          0.3784 |
+ Ponytail Palm      |                       11 |           30 |          0.3667 |
+ Rubber Plant       |                       13 |           36 |          0.3611 |
+ Alocasia Polly     |                       10 |           28 |          0.3571 |
+ Devil's Ivy        |                       10 |           31 |          0.3226 |
 
 ```
 --Web sessions with product_x added to cart 
