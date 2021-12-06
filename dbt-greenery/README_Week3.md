@@ -1,11 +1,12 @@
+### (1) Create new models to answer the first two questions (answer questions in README file)
 ### What is our overall conversion rate?
 The overall conversion rate is 36.1%.
-```
+```postgresql
 select round(count(distinct case when event_type = 'checkout' then session_uuid end)::numeric
              / count(distinct session_uuid), 3) as conversion_rate
 from dbt.dbt_emmanuel_t_staging.stg_events
 ```
-For the calculation I have used the formula suggested by Sourabh on the Slack channel (Conversion rate = number of unique sessions that had checkout / number of unique sessions).
+For the calculation I have used the formula suggested by Sourabh on the Slack channel (Conversion rate = number of unique sessions that had checkout / number of unique sessions).\
 But I found the web events data really not self-explanatory.
 Usually a checkout page is reached when products have been added to the cart and when customers are in the final step of the booking flow. And it is only once they would have finished to fill the details on the checkout page (payment details & delivery details) and after having sent the final validation ("order" click) that the visit would then be converted as an order.
 So I would have expected another event after the "checkout" event and before the "package_shipped" event.
@@ -47,7 +48,7 @@ These are the final values I obtained per product, as well as the query I have b
 | Alocasia Polly     |                       10 |           28 |          0.3571 |
 | Devil's Ivy        |                       10 |           31 |          0.3226 |
 
-```
+```postgresql
 --Web sessions with product_x added to cart 
 --(and which ended up as checked-out sessions or not checked-out)
 with web_sessions_with_product_x_added_to_cart as
@@ -75,5 +76,9 @@ select product_name,
 from web_sessions_with_product_x_added_to_cart
 group by product_name
 ```
-For the calculation I have used the logic suggested by Sourabh on the Slack channel.
-I also had to install a specific version of dbt_utils package to be compatible with current version of dbt we are using.
+For the calculation I have used the logic suggested by Sourabh on the Slack channel and I leveraged the split_part function from the dbt_utils package.
+
+
+### (4) After learning about dbt packages, we want to try one out and apply some macros or tests.
+I have installed the dbt-utils pacakge and used the split_part function of the package to get the product_uuid from a page_url.
+I had to install an old version of the package to be compatible to the current version of dbt we are using.
