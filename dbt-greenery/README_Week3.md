@@ -1,6 +1,6 @@
 ### (1) What is our overall conversion rate?
 The overall conversion rate is 36.1%.
-```postgresql
+```sql
 select round(count(distinct case when event_type = 'checkout' then session_uuid end)::numeric
              / count(distinct session_uuid), 3) as conversion_rate
 from dbt.dbt_emmanuel_t_staging.stg_events
@@ -47,7 +47,7 @@ These are the final values I obtained per product, as well as the query I have b
 | Alocasia Polly     |                       10 |           28 |          0.3571 |
 | Devil's Ivy        |                       10 |           31 |          0.3226 |
 
-```postgresql
+```sql
 --Web sessions with product_x added to cart 
 --(and which ended up as checked-out sessions or not checked-out)
 with web_sessions_with_product_x_added_to_cart as
