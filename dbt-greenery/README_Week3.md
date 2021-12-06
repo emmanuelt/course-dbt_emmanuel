@@ -1,5 +1,4 @@
-### (1) Create new models to answer the first two questions (answer questions in README file)
-### What is our overall conversion rate?
+### (1) What is our overall conversion rate?
 The overall conversion rate is 36.1%.
 ```postgresql
 select round(count(distinct case when event_type = 'checkout' then session_uuid end)::numeric
@@ -12,7 +11,7 @@ Usually a checkout page is reached when products have been added to the cart and
 So I would have expected another event after the "checkout" event and before the "package_shipped" event.
 I also do not understand how some sessions can have a "delete_from_cart" event without any "add_to_cart" event, why some sessions can have a "add_to_cart" event without previous "page_view", or why "package-shipped" events are standalone events.
 
-### What is our conversion rate by product?
+### (1) What is our conversion rate by product?
 These are the final values I obtained per product, as well as the query I have built to obtain these results.
 
 |   product_name     | web_sessions_checked_out | web_sessions | conversion_rate |
