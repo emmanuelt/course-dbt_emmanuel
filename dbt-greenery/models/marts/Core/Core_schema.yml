@@ -146,3 +146,9 @@ models:
       - name: order_quantity_of_products
         tests:
           - strictly_positive
+
+  - name: count_event_types_per_any_event_measure_TEST
+
+  - name: count_any_model_dimension_measure_TEST
+
+      

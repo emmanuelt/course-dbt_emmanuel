@@ -1,0 +1,1 @@
+select * from ({{count_event_types_per_any_event_measure('event_id')}}) t
