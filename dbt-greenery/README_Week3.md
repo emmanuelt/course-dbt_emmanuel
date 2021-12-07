@@ -78,9 +78,9 @@ group by product_name
 For the calculation I have used the logic suggested by Sourabh on the Slack channel and I leveraged the split_part function from the dbt_utils package.
 
 ### (2) Create a macro to simplify part of a model.
-I have created various macros.
-**Macro 1: Counting event types per web session**
-Looping through the different event types extracted from a sql query. 
+I have created various macros.\
+**Macro 1: Counting event types per web session**\
+Looping through the different event types extracted from a sql query.\
 I used the "run_query" methodology to get all the distinct event_types from the sql query affected to a set.
 ```sql 
 {% macro aggregate_event_types_per_session() %}
@@ -111,9 +111,9 @@ group by
 ```
 I also adapted the same macro with the dbt_utils "get_query_results_as_dic" function, which is giving the same results.
 
-**Macro 2: Counting the occurences of any measure aggregated by any dimension, for any model** 
-I therefore defined 3 parameters for this function (model,dimension,measure).
-The function can be applied to any staging model or to any mart model.
+**Macro 2: Counting the occurences of any measure aggregated by any dimension, for any model** \
+I therefore defined 3 parameters for this function (model,dimension,measure).\
+The function can be applied to any staging model or to any mart model.\
 ```sql 
 {% macro count_any_model_dimension_measure(model,dimension,measure) %}
 
@@ -124,8 +124,8 @@ The function can be applied to any staging model or to any mart model.
 
 {% endmacro %}
 ```
-**Macro 3: Calculating days between 2 dates**
-I managed to call the function with "dates entered manually" as arguments or with some sql functions such as now().
+**Macro 3: Calculating days between two dates**\
+I managed to call the function with "dates entered manually" as arguments or with some sql functions such as now().\
 But I do not manage to reference the field of a model within the Jinja used to call the macro.
 ```sql 
 {% macro days_between_2_dates(first_date,last_date) %}
