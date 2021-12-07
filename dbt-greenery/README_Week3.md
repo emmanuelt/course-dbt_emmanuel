@@ -81,7 +81,7 @@ For the calculation I have used the logic suggested by Sourabh on the Slack chan
 I have created various macros.
 <br />
 
-**Macro 1: Counting event types per web session** 
+**Macro 1: Counting event types per web session** \
 Looping through the different event types extracted from a sql query.\
 I used the "run_query" methodology to get all the distinct event_types from the sql query affected to a set.
 ```sql 
