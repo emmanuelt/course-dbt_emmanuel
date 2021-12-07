@@ -78,7 +78,7 @@ group by product_name
 For the calculation I have used the logic suggested by Sourabh on the Slack channel and I leveraged the split_part function from the dbt_utils package.
 
 ### (2) Create a macro to simplify part of a model.
-I have created various macros.\
+I have created various macros. <br />
 **Macro 1: Counting event types per web session**\
 Looping through the different event types extracted from a sql query.\
 I used the "run_query" methodology to get all the distinct event_types from the sql query affected to a set.
@@ -113,7 +113,7 @@ I also adapted the same macro with the dbt_utils "get_query_results_as_dic" func
 
 **Macro 2: Counting the occurences of any measure aggregated by any dimension, for any model** \
 I therefore defined 3 parameters for this function (model,dimension,measure).\
-The function can be applied to any staging model or to any mart model.\
+The function can be applied to any staging model or to any mart model.
 ```sql 
 {% macro count_any_model_dimension_measure(model,dimension,measure) %}
 
