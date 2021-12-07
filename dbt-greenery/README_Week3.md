@@ -78,8 +78,10 @@ group by product_name
 For the calculation I have used the logic suggested by Sourabh on the Slack channel and I leveraged the split_part function from the dbt_utils package.
 
 ### (2) Create a macro to simplify part of a model.
-I have created various macros. <br />
-**Macro 1: Counting event types per web session**\
+I have created various macros.
+<br />
+
+**Macro 1: Counting event types per web session** 
 Looping through the different event types extracted from a sql query.\
 I used the "run_query" methodology to get all the distinct event_types from the sql query affected to a set.
 ```sql 
