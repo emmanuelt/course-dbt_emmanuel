@@ -147,8 +147,7 @@ models:
         tests:
           - strictly_positive
 
-  - name: count_event_types_per_any_event_measure_TEST
+  - name: count_any_metric_for_any_dim_any_model
 
-  - name: count_any_model_dimension_measure_TEST
 
       

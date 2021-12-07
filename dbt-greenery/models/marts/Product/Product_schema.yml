@@ -2,7 +2,7 @@ version: 2
 
 models:
   
-  - name: fact_web_events_types
+  - name: fact_web_metrics_per_event_type
     description: "Fact table to calculate users, web events and web sessions per event_type."
     columns:
     - name: event_type
@@ -20,7 +20,7 @@ models:
       tests:
         - positive_or_equal_to_zero
       
-  - name: fact_web_events
+  - name: fact_web_events_per_URLpage
     description: "Fact table to calcule web metrics for each url of the website."
     columns:
       - name: web_url
@@ -45,3 +45,11 @@ models:
       - name: package_shipped_events
         tests:
           - positive_or_equal_to_zero
+
+  - name: fact_web_events_per_session
+
+  - name: fact_web_events_per_URLpage
+
+  - name: fact_web_metrics_per_event_type
+
+  - name: metric_conversion_per_product

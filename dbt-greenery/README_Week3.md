@@ -77,7 +77,75 @@ group by product_name
 ```
 For the calculation I have used the logic suggested by Sourabh on the Slack channel and I leveraged the split_part function from the dbt_utils package.
 
+### (2) Create a macro to simplify part of a model.
+I have created various macros.
+**Macro 1: Counting event types per web session**
+Looping through the different event types extracted from a sql query. 
+I used the "run_query" methodology to get all the distinct event_types from the sql query affected to a set.
+```sql 
+{% macro aggregate_event_types_per_session() %}
 
-### (4) After learning about dbt packages, we want to try one out and apply some macros or tests.
+{% set event_types_query %}
+select distinct event_type from {{ref('stg_events')}}
+{% endset %}
+
+{% set event_types = run_query(event_types_query) %}
+
+{% if execute %}
+    {% set event_types_list = event_types.columns[0].values() %}
+{% else %}
+    {% set event_types_list = [] %}
+{% endif %}
+
+select
+    session_uuid
+    {% for event_type_value in event_types_list %}
+    ,count(distinct (case when event_type='{{event_type_value}}' then event_uuid end)) as "{{event_type_value}}_count"
+    {% endfor %}
+    ,count(distinct event_uuid) as total_count
+from {{ref('stg_events')}} 
+group by 
+    session_uuid
+
+{% endmacro %}
+```
+I also adapted the same macro with the dbt_utils "get_query_results_as_dic" function, which is giving the same results.
+
+**Macro 2: Counting the occurences of any measure aggregated by any dimension, for any model** 
+I therefore defined 3 parameters for this function (model,dimension,measure).
+The function can be applied to any staging model or to any mart model.
+```sql 
+{% macro count_any_model_dimension_measure(model,dimension,measure) %}
+
+    select {{dimension}},
+           count(distinct {{measure}}) as {{measure}}_quantity        
+    from {{ ref(model) }}
+    group by {{dimension}}
+
+{% endmacro %}
+```
+**Macro 3: Calculating days between 2 dates**
+I managed to call the function with "dates entered manually" as arguments or with some sql functions such as now().
+But I do not manage to reference the field of a model within the Jinja used to call the macro.
+```sql 
+{% macro days_between_2_dates(first_date,last_date) %}
+    extract(day from ('{{last_date}}'::timestamp) - ('{{first_date}}'::timestamp))
+{% endmacro %}
+
+-- Examples of how the function can be called:
+-- days_between_2_dates('2021-01-01','2021-07-31')
+-- days_between_2_dates('2021-01-01','now()')
+
+-- What I do not manage to make work:
+-- days_between_2_dates('o.created_at','now()')
+-- days_between_2_dates('max(o.created_at)','now()')  
+```
+
+### (3) Add a post hook to your project to apply grants to the role “reporting”. Create reporting role first by running "CREATE ROLE reporting" in your database instance.
+
+
+
+
+### (4) Install a package and apply one or more of the macros to your project.
 I have installed the dbt-utils pacakge and used the split_part function of the package to get the product_uuid from a page_url.
 I had to install an old version of the package to be compatible to the current version of dbt we are using.

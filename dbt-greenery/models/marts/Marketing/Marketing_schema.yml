@@ -71,10 +71,7 @@ models:
           - valid_date
       - name: order_status
         tests:
-          - only_letters
-
-
-      
+          - only_letters    
 
   - name: fact_user_orders
     description: "Fact table with users and various user metrics related to web visits and orders."
