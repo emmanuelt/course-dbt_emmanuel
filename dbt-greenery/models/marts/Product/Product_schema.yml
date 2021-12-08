@@ -20,7 +20,7 @@ models:
       tests:
         - positive_or_equal_to_zero
       
-  - name: fact_web_events_per_URLpage
+  - name: fact_web_events_per_url_page
     description: "Fact table to calcule web metrics for each url of the website."
     columns:
       - name: web_url
@@ -47,9 +47,5 @@ models:
           - positive_or_equal_to_zero
 
   - name: fact_web_events_per_session
-
-  - name: fact_web_events_per_URLpage
-
-  - name: fact_web_metrics_per_event_type
 
   - name: metric_conversion_per_product

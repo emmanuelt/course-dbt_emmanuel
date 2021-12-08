@@ -144,10 +144,15 @@ But I do not manage to reference the field of a model within the Jinja used to c
 ```
 
 ### (3) Add a post hook to your project to apply grants to the role “reporting”. Create reporting role first by running "CREATE ROLE reporting" in your database instance.
-
-
-
+I added the following code in the dbt_project.yml, after having received some help from Jake because I was facing issues on my runs dur to my "multiple schemas" setup (main schema in my profile.yml and sub-schemas in my Marts and Staging folders).
+I did not apply a post-hook but a on-run-end.
+```yml 
+on-run-end:
+  - "{% for schema in schemas %}grant usage on schema {{ schema }} to group reporting;{% endfor %}"
+  - "{% for schema in schemas %}grant select on all tables in schema {{ schema }} to group reporting;{% endfor %}"
+  - "{% for schema in schemas %}alter default privileges in schema {{ schema }} grant select on tables to group reporting;{% endfor %}"
+```
 
 ### (4) Install a package and apply one or more of the macros to your project.
-I have installed the dbt-utils pacakge and used the split_part function of the package to get the product_uuid from a page_url.
+I have installed the dbt-utils package and used the split_part function of the package to get the product_uuid from a page_url.
 I had to install an old version of the package to be compatible to the current version of dbt we are using.
