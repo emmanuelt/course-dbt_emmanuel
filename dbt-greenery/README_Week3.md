@@ -144,8 +144,8 @@ But I do not manage to reference the field of a model within the Jinja used to c
 ```
 
 ### (3) Add a post hook to your project to apply grants to the role “reporting”. Create reporting role first by running "CREATE ROLE reporting" in your database instance.
-I added the following code in the dbt_project.yml, after having received some help from Jake because I was facing issues on my runs dur to my "multiple schemas" setup (main schema in my profile.yml and sub-schemas in my Marts and Staging folders).
-I did not apply a post-hook but a on-run-end.
+I added the following code in the dbt_project.yml, after having received some help from Jake because I was facing issues on my runs due to my "multiple schemas" setup (main schema in my profile.yml and sub-schemas in my Marts and Staging folders).\
+I did not apply a post-hook but an on-run-end.
 ```yml 
 on-run-end:
   - "{% for schema in schemas %}grant usage on schema {{ schema }} to group reporting;{% endfor %}"
