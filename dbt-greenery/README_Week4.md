@@ -47,4 +47,4 @@ from web_events_metrics
 
 ### Use an exposure on your product analytics model to represent that this is being used in downstream BI tools.
 The "exposures.yml" file can be found in my Product mart.\
-I created an exposure for a downstream dashboard (fictitious) which would allow the Product & Product Analytics teams to track conversion rates et dropoff rates for the different steps of the website booking flow. 
+I created an exposure for a downstream dashboard (fictitious) which would allow the Product & Product Analytics teams to track conversion rates and dropoff rates between the different steps of the website's booking flow. 
