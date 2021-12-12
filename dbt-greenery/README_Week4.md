@@ -1,9 +1,10 @@
-### (1) How are our users moving through the product funnel? Which steps in the funnel have largest drop off points?
+### (1) How users move through the product funnel? Which steps in the funnel have largest dropoff points?
 
 I have created the model "fact_product_funnel" in my Product mart.\
 The model is calculating funnel metrics at date level.\
 I have calculated the conversion rates and dropoff rates at date level in my model, but  below I have calculated the metrics without aggregating per date to get the overall customer behaviours (on the whole period).\
-The metrics have been calculating based on the week 4 instructions, but it is not necessarily the way I would calcualte them usually (if the dataset was cleaner / more logical).\
+The metrics have been calculating based on the week 4 instructions, but it is not necessarily the way I would calcualte them usually (if the dataset was cleaner / more logical).
+<br />
 The **total conversion rate** from level 1 to level 3 (Sessions with any event of type page_view / add_to_cart / checkout --> Sessions with any event of type checkout) is **57.5%**.\
 The **add_to_cart conversion rate** from level 1 to level 2 (Sessions with any event of type page_view / add_to_cart / checkout --> Sessions with any event of type add_to_cart / checkout) is **87.5%**.\
 The **checkout rate** from level 2 to level 3 (Sessions with any event of type add_to_cart / checkout --> Sessions with any event of type checkout) is **65.7%**.\
