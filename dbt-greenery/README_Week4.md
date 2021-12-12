@@ -1,5 +1,4 @@
 ### (1) How users move through the product funnel? Which steps in the funnel have largest dropoff points?
-
 I have created the model "fact_product_funnel" in my Product mart.\
 The model is calculating funnel metrics at date level.\
 I have calculated the conversion rates and dropoff rates at date level in my model, but  below I have calculated the metrics without aggregating per date to get the overall customer behaviours (on the whole period).\
@@ -45,3 +44,7 @@ select
 from web_events_metrics
 --order by 1
 ```
+
+### Use an exposure on your product analytics model to represent that this is being used in downstream BI tools.
+The "exposures.yml" file can be found in my Product mart.\
+I created an exposure for a downstream dashboard (fictitious) which would allow the Product & Product Analytics teams to track conversion rates et dropoff rates for the different steps of the website booking flow. 

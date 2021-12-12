@@ -1,0 +1,15 @@
+version: 2
+
+exposures:
+  
+  - name: Website Booking Funnel Analysis Dashboard
+    type: dashboard
+    maturity: high
+    url: https://www.websitebookingfunnelanalysisdashboard.com  #fake URL
+    description: >
+      Dashboard allowing to track conversation rate and droppoff rate between different stages of the website booking flow.
+    depends_on:
+      - ref('fact_product_funnel')
+    owner:
+      name: Emmanuel Treich
+      email: etreich@greenery.com
