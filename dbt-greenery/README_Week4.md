@@ -3,14 +3,14 @@
 I have created the model "fact_product_funnel" in my Product mart.\
 The model is calculating funnel metrics at date level.\
 I have calculated the conversion rates and dropoff rates at date level in my model, but  below I have calculated the metrics without aggregating per date to get the overall customer behaviours (on the whole period).\
-The metrics have been calculating based on the week 4 instructions, but it is not necessarily the way I would calcualte them usually (if the dataset was cleaner / more logical).
+The metrics have been calculated based on the week 4 instructions, but it is not necessarily the way I would calculate them usually (if the dataset was cleaner / more logical).\
 <br />
 The **total conversion rate** from level 1 to level 3 (Sessions with any event of type page_view / add_to_cart / checkout --> Sessions with any event of type checkout) is **57.5%**.\
 The **add_to_cart conversion rate** from level 1 to level 2 (Sessions with any event of type page_view / add_to_cart / checkout --> Sessions with any event of type add_to_cart / checkout) is **87.5%**.\
 The **checkout rate** from level 2 to level 3 (Sessions with any event of type add_to_cart / checkout --> Sessions with any event of type checkout) is **65.7%**.\
 <br />
-Therefore the **biggest dropoff point is between level 2 and level 3** (Sessions with any event of type add_to_cart / checkout --> Sessions with any event of type checkout).
-The dropoff rate between these 2 stages is equal to **34.3%**.\
+Therefore the **biggest dropoff point is between level 2 and level 3** (Sessions with any event of type add_to_cart / checkout --> Sessions with any event of type checkout).\
+The dropoff rate between these 2 stages is equal to **34.3%**.
 
 ```sql
 with web_events_metrics as (
